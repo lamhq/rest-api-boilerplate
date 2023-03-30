@@ -1,0 +1,8 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.trimTrailingWhitespace": true,
+  "editor.snippetSuggestions": "top",
+  "editor.tabCompletion": "on"
+}

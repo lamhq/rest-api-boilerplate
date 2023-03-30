@@ -71,3 +71,12 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+## Reference
+
+- https://docs.nestjs.com/#installation
+- https://typicode.github.io/husky/#/?id=automatic-recommended
+- https://commitlint.js.org/#/guides-local-setup?id=guide-local-setup
+- https://www.npmjs.com/package/git-branch-is
+- https://www.npmjs.com/package/eslint-config-airbnb-typescript

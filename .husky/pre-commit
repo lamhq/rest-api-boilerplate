@@ -2,4 +2,4 @@
 . "$(dirname "$0")/_/husky.sh"
 
 npm test
-# npx git-branch-is -r '^(feature|fix|hotfix|release)/[a-z\-\d\.]+$'
+npx git-branch-is -r '^(feature|fix|hotfix|release)/[a-z\-\d\.]+$'

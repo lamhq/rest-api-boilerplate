@@ -1,0 +1,26 @@
+name: Deploy API app
+
+on:
+  create:
+    tags:
+      - v*
+
+jobs:
+  deploy:
+    name: Deploy to ${{ matrix.environment }}
+    environment: ${{ matrix.environment }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [dev, staging]
+    env:
+      AWS_REGION: us-east-2
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Deploy
+        run: echo "${GITHUB_REF##*/}"
+
+      - name: Display env variable
+        run: echo "${{ vars.REDIS_HOST }}"

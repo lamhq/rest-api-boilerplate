@@ -21,7 +21,7 @@ jobs:
       - name: Run unit test
         run: yarn test
 
-  lint:
+  lint_code:
     name: Lint
     runs-on: ubuntu-latest
     steps:
@@ -39,9 +39,11 @@ jobs:
       - name: Run Linter
         run: yarn lint
 
-  pr:
+  lint_pr_title:
     name: Check pull request title
     runs-on: ubuntu-latest
+    permissions:
+      statuses: write
     steps:
       - name: conventional-pr-title
         uses: aslafy-z/conventional-pr-title-action@v3

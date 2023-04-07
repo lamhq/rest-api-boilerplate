@@ -1,4 +1,4 @@
-# Release
+# Release and Deploy
 
 A release refers to a specific version of software that is made available for distribution or deployment.
 
@@ -31,7 +31,9 @@ The Release PR is created automatically and contains the updated changelog and a
 
 ## Create an alpha release
 
-TBC.
+Typically during development, we need to deploy the application to the test environment to verify its functioning before releasing it.
+
+This can be accomplished by merging the Release PR of development branch, it will create an alpha release and trigger a deployment for that release.
 
 
 ## Deploy

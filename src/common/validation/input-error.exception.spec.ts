@@ -1,6 +1,7 @@
 import { ValidationError } from 'class-validator';
 import { BadRequestException } from '@nestjs/common';
 import { InputErrorException } from './input-error.exception';
+import { CommonError } from './common-error';
 
 jest.mock('@nestjs/common', () => ({
   __esModule: true, // this property makes it work
@@ -32,8 +33,7 @@ describe('InputErrorException', () => {
     } catch (error) {}
     expect(BadRequestException).toHaveBeenCalledWith({
       statusCode: 400,
-      message: 'Invalid form data',
-      error: 'CMN_VALIDATION_ERROR',
+      error: CommonError.ValidationError,
       details: {
         email: 'is required',
         addresses: [{ phone: 'is required' }],

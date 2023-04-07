@@ -16,6 +16,7 @@ describe('AppController (e2e)', () => {
   });
 
   it('/ (GET)', () => {
+    // prettier-ignore
     return request(app.getHttpServer())
       .get('/')
       .expect(200)

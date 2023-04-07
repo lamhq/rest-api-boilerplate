@@ -32,13 +32,13 @@ git push --set-upstream origin 'develop/sprint-1'
 Development of new features starting from the development branch.
 
 1. Create a feature branch from the development branch.
-  ```bash
-  git checkout 'develop/sprint-1'
-  git checkout -b 'feature/{ticket-id}/{description}'
-  git push --set-upstream origin 'feature/{ticket-id}/{description}'
-  ```
-1. Submit a **Draft** pull request.
+    ```bash
+    git checkout 'develop/sprint-1'
+    git checkout -b 'feature/{ticket-id}/{description}'
+    git push --set-upstream origin 'feature/{ticket-id}/{description}'
+    ```
 1. Code and update your pull request regularly.
+1. Submit a **Draft** pull request.
 
 *Submitting a pull request (PR) early on allows the team lead to monitor progress and give timely feedback.*
 
@@ -67,11 +67,11 @@ Development of new features starting from the development branch.
 Bug fixes for the current version starting from the main branch.
 
 1. Create a bug fix branch from the main branch.
-  ```bash
-  git checkout 'master'
-  git checkout -b 'fix/{ticket-id}/{description}'
-  git push --set-upstream origin 'fix/{ticket-id}/{description}'
-  ```
+    ```bash
+    git checkout 'master'
+    git checkout -b 'fix/{ticket-id}/{description}'
+    git push --set-upstream origin 'fix/{ticket-id}/{description}'
+    ```
 1. Submit a Draft pull request.
 1. Code and update your pull request regularly.
 

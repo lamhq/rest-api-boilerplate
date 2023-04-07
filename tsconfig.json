@@ -19,6 +19,9 @@
     "noFallthroughCasesInSwitch": false,
 
     /* additional config */
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "paths": {
+      "@src/*": ["src/*"],
+    }
   }
 }

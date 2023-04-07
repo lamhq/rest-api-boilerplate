@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+  pull-requests: write
+
+name: Create Production Release
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: node
+          package-name: production-release
+          token: ${{ secrets.RELEASE_TOKEN }}
+          pull-request-header: Submit a new production release

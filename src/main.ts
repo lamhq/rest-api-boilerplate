@@ -4,7 +4,7 @@ import { ValidationError } from 'class-validator';
 import { INestApplication } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { DtoValidationPipe } from './common/validation/dto-validation-pipe';
-import { InputErrorException } from './common/validation/input-error.exception';
+import { ValidationErrorException } from './common/validation/validation-error.exception';
 
 function attachSwaggerModule(app: INestApplication): void {
   const options = new DocumentBuilder()
@@ -44,7 +44,7 @@ async function bootstrap(): Promise<void> {
 
       // transform validation error to error detail
       exceptionFactory: (errors: ValidationError[]): never => {
-        throw new InputErrorException(errors);
+        throw new ValidationErrorException(errors);
       },
     }),
   );

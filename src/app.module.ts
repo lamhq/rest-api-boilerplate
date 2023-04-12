@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MailerModule } from '@nestjs-modules/mailer';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { configFactory } from './config';
+import { IConfiguration, configFactory } from './config';
 
 @Module({
   imports: [
@@ -10,6 +12,13 @@ import { configFactory } from './config';
       // allow injecting ConfigService in module factory
       isGlobal: true,
       load: [configFactory],
+    }),
+    MailerModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService<IConfiguration, true>) => {
+        const mailerOptions = configService.get('mail', { infer: true });
+        return mailerOptions;
+      },
     }),
   ],
   controllers: [AppController],

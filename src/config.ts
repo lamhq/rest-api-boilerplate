@@ -1,3 +1,6 @@
+import { MailerOptions } from '@nestjs-modules/mailer';
+import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter';
+
 /**
  * Contains a set of properties that are used to configure the application
  */
@@ -15,6 +18,9 @@ export interface IConfiguration {
 
   // name of the system
   appName: string;
+
+  // config for sending emails
+  mail: MailerOptions & { senderEmail: string };
 }
 
 export const configFactory = (): IConfiguration => ({
@@ -22,6 +28,29 @@ export const configFactory = (): IConfiguration => ({
   nodeEnv: process.env.NODE_ENV || 'development',
   environment: process.env.RUNTIME_ENV || 'local',
   appName: 'API Boilerplate',
+  mail: {
+    transport: {
+      host: process.env.SMTP_HOST || 'localhost',
+      port: (process.env.SMTP_PORT && parseInt(process.env.SMTP_PORT, 10)) || 1025,
+      auth: process.env.SMTP_USER
+        ? {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PWD || '',
+          }
+        : undefined,
+    },
+    defaults: {
+      from: process.env.FROM_EMAIL,
+    },
+    template: {
+      adapter: new EjsAdapter(),
+      dir: `${__dirname}/assets/email-templates`,
+      options: {
+        strict: false,
+      },
+    },
+    senderEmail: 'support@example.com',
+  },
 });
 
 export default configFactory;

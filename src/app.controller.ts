@@ -12,4 +12,10 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Get('email')
+  @ApiOperation({ summary: 'Check API service is running' })
+  sendEmail(): Promise<void> {
+    return this.appService.sendEmail();
+  }
 }

@@ -1,10 +1,17 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CommonModule } from './common/common.module';
+import { configFactory } from './config';
 
 @Module({
-  imports: [CommonModule],
+  imports: [
+    ConfigModule.forRoot({
+      // allow injecting ConfigService in module factory
+      isGlobal: true,
+      load: [configFactory],
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

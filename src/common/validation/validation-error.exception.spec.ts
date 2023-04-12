@@ -1,6 +1,6 @@
 import { ValidationError } from 'class-validator';
 import { BadRequestException } from '@nestjs/common';
-import { InputErrorException } from './input-error.exception';
+import { ValidationErrorException } from './validation-error.exception';
 import { CommonError } from './common-error';
 
 jest.mock('@nestjs/common', () => ({
@@ -9,7 +9,7 @@ jest.mock('@nestjs/common', () => ({
   HttpStatus: { BAD_REQUEST: 400 },
 }));
 
-describe('InputErrorException', () => {
+describe('ValidationErrorException', () => {
   it('should pass error object to BadRequestException', () => {
     // const constructor = jest.spyOn(common, 'BadRequestException');
     const errors: ValidationError[] = [
@@ -28,7 +28,7 @@ describe('InputErrorException', () => {
     ];
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     try {
-      throw new InputErrorException(errors);
+      throw new ValidationErrorException(errors);
       // eslint-disable-next-line no-empty
     } catch (error) {}
     expect(BadRequestException).toHaveBeenCalledWith({

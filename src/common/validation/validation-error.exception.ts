@@ -30,7 +30,7 @@ export class ValidationErrorException extends BadRequestException {
     const details = Array.isArray(errors) ? getErrorDetails(errors) : errors;
     super({
       statusCode: HttpStatus.BAD_REQUEST,
-      error: CommonError.ValidationError,
+      errorCode: CommonError.ValidationError,
       details,
     });
   }

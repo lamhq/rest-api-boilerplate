@@ -4,7 +4,7 @@ import { ValidationError } from 'class-validator';
 import { INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
-import { DtoValidationPipe } from './common/validation/dto-validation-pipe';
+import { PayloadValidationPipe } from './common/validation/playload-validation-pipe';
 import { ValidationErrorException } from './common/validation/validation-error.exception';
 import { IConfiguration } from './config';
 
@@ -26,9 +26,9 @@ async function bootstrap(): Promise<void> {
 
   attachSwaggerModule(app);
 
-  // enable request validation
+  // enable payload validation
   app.useGlobalPipes(
-    new DtoValidationPipe({
+    new PayloadValidationPipe({
       // keep validation of missing properties
       skipMissingProperties: false,
 

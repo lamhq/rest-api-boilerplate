@@ -33,7 +33,7 @@ describe('ValidationErrorException', () => {
     } catch (error) {}
     expect(BadRequestException).toHaveBeenCalledWith({
       statusCode: 400,
-      error: CommonError.ValidationError,
+      errorCode: CommonError.ValidationError,
       details: {
         email: 'is required',
         addresses: [{ phone: 'is required' }],

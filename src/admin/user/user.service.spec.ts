@@ -20,8 +20,8 @@ describe('UserService', () => {
   describe('create', () => {
     it('should create a user and add to users array', async () => {
       const data: UserDto = {
-        name: 'Alice',
-        email: 'alice@example.com',
+        name: 'Lily',
+        email: 'lily@example.com',
         birthday: new Date(),
       };
       expect(service.create(data)).resolves.toMatchObject({

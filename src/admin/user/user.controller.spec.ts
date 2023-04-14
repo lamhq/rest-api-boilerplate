@@ -4,11 +4,12 @@ import { mock } from 'jest-mock-extended';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { User } from './user.entity';
-import { UserDto } from './user.dto';
+import { UpdateUserPipe } from './pipes/update-user.pipe';
 
 describe('UserController', () => {
   let controller: UserController;
   const userService = mock<UserService>();
+  const updateUserPipe = mock<UpdateUserPipe>();
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -19,7 +20,10 @@ describe('UserController', () => {
           useValue: userService,
         },
       ],
-    }).compile();
+    })
+      .overridePipe(UpdateUserPipe)
+      .useValue(updateUserPipe)
+      .compile();
 
     controller = module.get<UserController>(UserController);
   });
@@ -30,46 +34,41 @@ describe('UserController', () => {
 
   describe('create', () => {
     it('should return a User', async () => {
-      userService.create.mockResolvedValueOnce({} as User);
-      const data: UserDto = {} as UserDto;
-
-      expect(controller.create(data)).resolves.toEqual({} as User);
+      const user = new User({});
+      userService.create.mockResolvedValueOnce(user);
+      expect(controller.create({ email: 'abc@m.com' })).resolves.toEqual(user);
     });
   });
 
   describe('findAll', () => {
     it('should return an array of Users', async () => {
-      userService.findAll.mockResolvedValueOnce([{}] as User[]);
-      const query = {};
-
-      expect(controller.findAll(query)).resolves.toEqual([{}] as User[]);
+      userService.findAll.mockResolvedValueOnce([]);
+      expect(controller.findAll(0, 10)).resolves.toEqual([]);
     });
   });
 
   describe('findById', () => {
     it('should return a User', async () => {
-      userService.findByIdOrFail.mockResolvedValueOnce({} as User);
-      const id = '1';
-      expect(controller.findById(id)).resolves.toEqual({} as User);
+      const user = new User({});
+      userService.findByIdOrFail.mockResolvedValueOnce(user);
+      expect(controller.findById('1')).resolves.toEqual(user);
     });
   });
 
   describe('update', () => {
     it('should return a User', async () => {
-      userService.update.mockResolvedValueOnce({} as User);
-      const id = '1';
-      const data: UserDto = {} as UserDto;
+      const user = new User({});
+      const data = { email: 'abc@m.com' };
+      userService.update.mockResolvedValueOnce(user);
 
-      expect(controller.update(id, data)).resolves.toEqual({} as User);
+      expect(controller.update('1', data)).resolves.toEqual(user);
     });
   });
 
   describe('remove', () => {
-    it('should return void', async () => {
+    it('should success', async () => {
       userService.remove.mockResolvedValueOnce(undefined);
-      const id = '1';
-
-      expect(controller.remove(id)).resolves.toBeUndefined();
+      expect(controller.remove('1')).resolves.toBeUndefined();
     });
   });
 });

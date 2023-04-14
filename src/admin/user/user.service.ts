@@ -8,14 +8,19 @@ import { IUserQuery, User, UserStatus } from './user.entity';
 export class UserService {
   private users: User[] = [
     { id: 1, name: 'John', email: 'john@example.com', status: UserStatus.Active },
+    { id: 2, name: 'Jane', email: 'jane@example.com', status: UserStatus.Inactive },
+    { id: 3, name: 'Bob', email: 'bob@example.com', status: UserStatus.Active },
+    { id: 18, name: 'Alice', email: 'alice@example.com', status: UserStatus.Active },
+    { id: 19, name: 'Mike', email: 'mike@example.com', status: UserStatus.Inactive },
+    { id: 20, name: 'Sarah', email: 'sarah@example.com', status: UserStatus.Active },
   ];
 
   async create(data: UserDto): Promise<User> {
     const user = new User({
+      id: this.getNewId(),
       name: data.name,
       email: data.email,
       birthday: data.birthday,
-      id: this.getNewId(),
     });
     this.users.push(user);
     return user;
@@ -36,6 +41,11 @@ export class UserService {
     }
 
     return users;
+  }
+
+  async findOne(query: IUserQuery): Promise<User | undefined> {
+    const users = await this.findAll({ ...query, limit: 1, offset: 0 });
+    return users.length ? users[0] : undefined;
   }
 
   async findByIdOrFail(id: IDField): Promise<User> {

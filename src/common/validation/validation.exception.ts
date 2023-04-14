@@ -25,7 +25,7 @@ export function getErrorDetails(errors: ValidationError[]): IErrorDetails {
   }, {});
 }
 
-export class ValidationErrorException extends BadRequestException {
+export class ValidationException extends BadRequestException {
   constructor(errors: ValidationError[] | IErrorDetails) {
     const details = Array.isArray(errors) ? getErrorDetails(errors) : errors;
     super({

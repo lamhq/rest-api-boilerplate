@@ -5,7 +5,7 @@ import { INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
 import { PayloadValidationPipe } from './common/validation/playload-validation-pipe';
-import { ValidationErrorException } from './common/validation/validation-error.exception';
+import { ValidationException } from './common/validation/validation.exception';
 import { IConfiguration } from './config';
 
 function attachSwaggerModule(app: INestApplication): void {
@@ -46,7 +46,7 @@ async function bootstrap(): Promise<void> {
 
       // transform validation error to error detail
       exceptionFactory: (errors: ValidationError[]): never => {
-        throw new ValidationErrorException(errors);
+        throw new ValidationException(errors);
       },
     }),
   );

@@ -14,19 +14,19 @@ export interface IUserQuery extends ICollectionQuery {
 
 export class User {
   @Expose()
-  @ApiProperty()
+  @ApiProperty({ example: 1 })
   id: number;
 
   @Expose()
-  @ApiProperty()
+  @ApiProperty({ example: 'john@example.com' })
   email: string;
 
   @Expose()
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({ example: 'John Doe' })
   name?: string;
 
   @Expose()
-  @ApiPropertyOptional({ type: Date })
+  @ApiPropertyOptional({ type: Date, example: '2000-01-01' })
   birthday?: Date;
 
   @Exclude()

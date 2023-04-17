@@ -1,14 +1,14 @@
 import { TestingModule, Test } from '@nestjs/testing';
-import { DtoValidationPipe } from './dto-validation-pipe';
+import { PayloadValidationPipe } from './playload-validation-pipe';
 
 describe('DtoValidationPipe', () => {
-  let pipe: DtoValidationPipe;
+  let pipe: PayloadValidationPipe;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [DtoValidationPipe],
+      providers: [PayloadValidationPipe],
     }).compile();
-    pipe = module.get<DtoValidationPipe>(DtoValidationPipe);
+    pipe = module.get<PayloadValidationPipe>(PayloadValidationPipe);
   });
 
   it('should be defined', () => {

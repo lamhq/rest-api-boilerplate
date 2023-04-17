@@ -5,6 +5,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { IConfiguration, configFactory } from './config';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { IConfiguration, configFactory } from './config';
         return mailerOptions;
       },
     }),
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],

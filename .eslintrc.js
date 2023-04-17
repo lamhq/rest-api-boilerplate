@@ -44,5 +44,14 @@ module.exports = {
         'prefix': ['I']
       }
     ],
+
+    // allow adding @types/express package in devDependencies
+    'import/no-extraneous-dependencies':[
+      'error', { 'devDependencies': true }
+    ],
+  },
+  // allow using express without adding it as dependencies
+  settings: {
+    'import/core-modules': ['express'],
   },
 };

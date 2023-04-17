@@ -5,7 +5,7 @@ import { Injectable, ValidationPipe, ArgumentMetadata } from '@nestjs/common';
  * A global pipe that validate and transform the request body using class-validator
  * https://docs.nestjs.com/techniques/validation#using-the-built-in-validationpipe
  */
-export class DtoValidationPipe extends ValidationPipe {
+export class PayloadValidationPipe extends ValidationPipe {
   /**
    * Validate and transform the input data to class object
    * @param value The incoming request object data.

@@ -4,8 +4,8 @@ import { ValidationError } from 'class-validator';
 import { INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
-import { DtoValidationPipe } from './common/validation/dto-validation-pipe';
-import { ValidationErrorException } from './common/validation/validation-error.exception';
+import { PayloadValidationPipe } from './common/validation/playload-validation-pipe';
+import { ValidationException } from './common/validation/validation.exception';
 import { IConfiguration } from './config';
 
 function attachSwaggerModule(app: INestApplication): void {
@@ -26,9 +26,9 @@ async function bootstrap(): Promise<void> {
 
   attachSwaggerModule(app);
 
-  // enable request validation
+  // enable payload validation
   app.useGlobalPipes(
-    new DtoValidationPipe({
+    new PayloadValidationPipe({
       // keep validation of missing properties
       skipMissingProperties: false,
 
@@ -46,7 +46,7 @@ async function bootstrap(): Promise<void> {
 
       // transform validation error to error detail
       exceptionFactory: (errors: ValidationError[]): never => {
-        throw new ValidationErrorException(errors);
+        throw new ValidationException(errors);
       },
     }),
   );

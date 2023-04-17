@@ -5,6 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
+      // For more information, visit: https://gist.github.com/jherax/231b2dda7f9cce20e13f4590594fdb70
       "type": "node",
       "request": "launch",
       "name": "Jest: current file",

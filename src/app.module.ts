@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { IConfiguration, configFactory } from './config';
 import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { AdminModule } from './admin/admin.module';
       },
     }),
     AdminModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -45,12 +45,12 @@ module.exports = {
       }
     ],
 
-    // allow adding express package in devDependencies
+    // allow adding @types/express package in devDependencies
     'import/no-extraneous-dependencies':[
       'error', { 'devDependencies': true }
     ],
   },
-  // allow adding express package in devDependencies
+  // allow using express without adding it as dependencies
   settings: {
     'import/core-modules': ['express'],
   },

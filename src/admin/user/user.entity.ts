@@ -8,7 +8,6 @@ export enum UserStatus {
 }
 
 export interface IUserQuery extends ICollectionQuery {
-  status?: UserStatus;
   email?: string;
 }
 
@@ -31,6 +30,9 @@ export class User {
 
   @Exclude()
   status: UserStatus;
+
+  @Exclude()
+  hashedPassword?: string;
 
   constructor(partial?: Partial<User>) {
     Object.assign(this, partial);

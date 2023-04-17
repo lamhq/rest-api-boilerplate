@@ -21,6 +21,7 @@ describe('UserController', () => {
         },
       ],
     })
+      // override pipe with mock instance
       .overridePipe(UpdateUserPipe)
       .useValue(updateUserPipe)
       .compile();

@@ -7,12 +7,12 @@ import { IUserQuery, User, UserStatus } from './user.entity';
 @Injectable()
 export class UserService {
   private users: User[] = [
-    { id: 1, name: 'John', email: 'john@example.com', status: UserStatus.Active },
-    { id: 2, name: 'Jane', email: 'jane@example.com', status: UserStatus.Inactive },
-    { id: 3, name: 'Bob', email: 'bob@example.com', status: UserStatus.Active },
-    { id: 18, name: 'Alice', email: 'alice@example.com', status: UserStatus.Active },
-    { id: 19, name: 'Mike', email: 'mike@example.com', status: UserStatus.Inactive },
-    { id: 20, name: 'Sarah', email: 'sarah@example.com', status: UserStatus.Active },
+    new User({ id: 1, name: 'John', email: 'john@example.com', status: UserStatus.Active }),
+    new User({ id: 2, name: 'Jane', email: 'jane@example.com', status: UserStatus.Inactive }),
+    new User({ id: 3, name: 'Bob', email: 'bob@example.com', status: UserStatus.Active }),
+    new User({ id: 18, name: 'Alice', email: 'alice@example.com', status: UserStatus.Active }),
+    new User({ id: 19, name: 'Mike', email: 'mike@example.com', status: UserStatus.Inactive }),
+    new User({ id: 20, name: 'Sarah', email: 'sarah@example.com', status: UserStatus.Active }),
   ];
 
   async create(data: UserDto): Promise<User> {
@@ -37,7 +37,7 @@ export class UserService {
     }
 
     if (query.offset && query.limit) {
-      users = users.slice(query.offset, query.limit);
+      users = users.slice(query.offset, query.offset + query.limit);
     }
 
     return users;

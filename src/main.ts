@@ -2,7 +2,7 @@ import cookieParser from 'cookie-parser';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationError } from 'class-validator';
-import { INestApplication } from '@nestjs/common';
+import { ClassSerializerInterceptor, INestApplication } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
 import { PayloadValidationPipe } from './common/validation/playload-validation-pipe';
@@ -26,6 +26,9 @@ async function bootstrap(): Promise<void> {
   app.setGlobalPrefix('api');
 
   attachSwaggerModule(app);
+
+  // enable transforming entity class to json
+  app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get('Reflector')));
 
   // enable cookie parser
   app.use(cookieParser());

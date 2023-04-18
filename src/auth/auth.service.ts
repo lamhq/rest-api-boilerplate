@@ -69,11 +69,4 @@ export class AuthService {
     });
     return token;
   }
-
-  // setAuthCookie(req: Request, token: AccessToken) {
-  //   req.res!.cookie(TOKEN_COOKIE_NAME, token.token, {
-  //     expires: token.expireAt,
-  //     httpOnly: true,
-  //   });
-  // }
 }

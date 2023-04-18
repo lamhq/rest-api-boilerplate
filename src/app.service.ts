@@ -6,7 +6,7 @@ import { IConfiguration } from './config';
 @Injectable()
 export class AppService {
   constructor(
-    private configService: ConfigService<IConfiguration, true>,
+    private readonly configService: ConfigService<IConfiguration, true>,
     private readonly mailerService: MailerService,
   ) {}
 

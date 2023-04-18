@@ -1,5 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { ICollectionQuery } from '@src/common/orm/collection-query';
+import { IDField } from '@src/common/orm/id-field';
 import { Exclude, Expose } from 'class-transformer';
 
 export enum UserStatus {
@@ -8,6 +9,7 @@ export enum UserStatus {
 }
 
 export interface IUserQuery extends ICollectionQuery {
+  id?: IDField;
   email?: string;
 }
 

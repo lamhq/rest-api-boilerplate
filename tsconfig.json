@@ -20,6 +20,9 @@
 
     /* additional config */
     "noUnusedLocals": true,
+    // fix for cookie-parser module
+    "esModuleInterop": true,
+    // mapping local module path
     "paths": {
       "@src/*": ["src/*"],
     }

@@ -1,3 +1,4 @@
+import cookieParser from 'cookie-parser';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationError } from 'class-validator';
@@ -25,6 +26,9 @@ async function bootstrap(): Promise<void> {
   app.setGlobalPrefix('api');
 
   attachSwaggerModule(app);
+
+  // enable cookie parser
+  app.use(cookieParser());
 
   // enable payload validation
   app.useGlobalPipes(

@@ -41,6 +41,11 @@ export class UserService {
       users = users.filter((u) => u.email === query.email);
     }
 
+    if (query.id) {
+      const { id } = query;
+      users = users.filter((u) => u.id.toString() === id.toString());
+    }
+
     if (query.offset && query.limit) {
       users = users.slice(query.offset, query.offset + query.limit);
     }

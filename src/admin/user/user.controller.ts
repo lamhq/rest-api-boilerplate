@@ -9,6 +9,7 @@ import {
   Param,
   Put,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -22,6 +23,7 @@ import {
 } from '@nestjs/swagger';
 import { ErrorResponse } from '@src/common/validation/error-response';
 import { IDField } from '@src/common/orm/id-field';
+import { JwtAuthGuard } from '@src/auth/jwt/jwt-auth.guard';
 import { User } from './user.entity';
 import { UserDto } from './user.dto';
 import { UserService } from './user.service';
@@ -30,6 +32,7 @@ import { UpdateUserPipe } from './pipes/update-user.pipe';
 
 @ApiTags('Admin')
 @Controller('admin/users')
+@UseGuards(JwtAuthGuard)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

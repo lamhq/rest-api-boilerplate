@@ -1,3 +1,4 @@
+import { StringValue } from 'ms';
 import { MailerOptions } from '@nestjs-modules/mailer';
 import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter';
 
@@ -21,6 +22,17 @@ export interface IConfiguration {
 
   // config for sending emails
   mail: MailerOptions & { senderEmail: string };
+
+  // authentication options
+  auth: {
+    // Access token lifetime, expressed in a string
+    // describing a time span: [zeit/ms](https://github.com/zeit/ms.js).
+    // E.g.: 60, "2 days", "10h", "7d"
+    accessTokenLifetime: StringValue;
+
+    // secret to generate jwt
+    jwtSecret: string;
+  };
 }
 
 export const configFactory = (): IConfiguration => ({
@@ -50,6 +62,10 @@ export const configFactory = (): IConfiguration => ({
       },
     },
     senderEmail: 'support@example.com',
+  },
+  auth: {
+    accessTokenLifetime: '3d',
+    jwtSecret: 'tPmdfvPWW6dH4qb7',
   },
 });
 

@@ -7,7 +7,13 @@ import { IUserQuery, User, UserStatus } from './user.entity';
 @Injectable()
 export class UserService {
   private users: User[] = [
-    new User({ id: 1, name: 'John', email: 'john@example.com', status: UserStatus.Active }),
+    new User({
+      id: 1,
+      name: 'John',
+      email: 'john@example.com',
+      status: UserStatus.Active,
+      hashedPassword: '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e',
+    }),
     new User({ id: 2, name: 'Jane', email: 'jane@example.com', status: UserStatus.Inactive }),
     new User({ id: 3, name: 'Bob', email: 'bob@example.com', status: UserStatus.Active }),
     new User({ id: 18, name: 'Alice', email: 'alice@example.com', status: UserStatus.Active }),
@@ -21,6 +27,7 @@ export class UserService {
       name: data.name,
       email: data.email,
       birthday: data.birthday,
+      status: UserStatus.Active,
     });
     this.users.push(user);
     return user;
@@ -28,12 +35,15 @@ export class UserService {
 
   async findAll(query: IUserQuery): Promise<User[]> {
     let { users } = this;
-    if (query.status) {
-      users = users.filter((u) => u.status === query.status);
-    }
+    users = users.filter((u) => u.status === UserStatus.Active);
 
     if (query.email) {
       users = users.filter((u) => u.email === query.email);
+    }
+
+    if (query.id) {
+      const { id } = query;
+      users = users.filter((u) => u.id.toString() === id.toString());
     }
 
     if (query.offset && query.limit) {

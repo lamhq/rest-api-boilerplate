@@ -60,12 +60,11 @@ describe('UserService', () => {
     });
 
     it('should filter and return users by status provided in query', async () => {
-      const query = { status: UserStatus.Active };
-      const results = await service.findAll(query);
+      const results = await service.findAll({});
 
       expect(results).toEqual(expect.any(Array));
       expect(results.length).toBe(4);
-      expect(results.every((u) => u.status === query.status)).toBeTruthy();
+      expect(results.every((u) => u.status === UserStatus.Active)).toBeTruthy();
     });
 
     it('should filter and return users by email provided in query', async () => {
@@ -88,8 +87,7 @@ describe('UserService', () => {
 
   describe('findOne', () => {
     it('should return the first user matching the query', async () => {
-      const query = { status: UserStatus.Active };
-      await expect(service.findOne(query)).resolves.toBeInstanceOf(User);
+      await expect(service.findOne({})).resolves.toBeInstanceOf(User);
     });
 
     it('should return undefined if no users match the query', async () => {

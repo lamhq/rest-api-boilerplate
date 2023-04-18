@@ -8,7 +8,7 @@ const config: Config = {
   transform: {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
-  collectCoverageFrom: ['**/*.{service,guard,strategy,decorator,handler,pipe}.ts'],
+  collectCoverageFrom: ['**/*.{controller,service,guard,strategy,decorator,handler,pipe}.ts'],
   coverageDirectory: '../coverage',
   testEnvironment: 'node',
 

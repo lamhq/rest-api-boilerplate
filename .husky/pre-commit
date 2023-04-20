@@ -1,5 +1,11 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# run unit test
 npm test
-npx git-branch-is -r '^(feature|fix|develop|release)/[a-z\-\d\.]+$'
+
+# check branch name
+npx git-branch-is -r '^(feature|fix|develop)/[a-z\-\d\.]+$'
+
+# lint stagged files with eslint
+npx lint-staged

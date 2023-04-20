@@ -1,12 +1,11 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
-import { User } from '@src/admin/user/user.entity';
 
 /**
  * Return the user information associated with the request
  * You can retrieve user attribute value by passing an attribute name
  * @param data attribute name
  */
-export const factoryFn = (data: string | undefined, ctx: ExecutionContext): User | undefined => {
+export const factoryFn = (data: string | undefined, ctx: ExecutionContext): unknown | undefined => {
   const request = ctx.switchToHttp().getRequest();
   const { user } = request;
 

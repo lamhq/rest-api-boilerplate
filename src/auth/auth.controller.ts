@@ -9,9 +9,9 @@ import {
 } from '@nestjs/swagger';
 
 import { User } from '@src/admin/user/user.entity';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { BasicAuthGuard } from './basic/basic-auth.guard';
-import { CurUser } from './cur-user.decorator';
+import { User as LoggedUser } from './decorators/user.decorator';
 import { AccessToken } from './access-token';
 
 const AUTH_COOKIE_NAME = 'access-token';
@@ -33,7 +33,7 @@ export class AuthController {
   @ApiOkResponse({ type: AccessToken })
   @ApiUnauthorizedResponse({ description: 'Invalid login credentials' })
   @UseGuards(BasicAuthGuard)
-  async getAccessToken(@CurUser() user: User, @Req() req: Request): Promise<AccessToken> {
+  async getAccessToken(@LoggedUser() user: User, @Req() req: Request): Promise<AccessToken> {
     const token = await this.authService.createAccessToken(user);
     req.res?.cookie(AUTH_COOKIE_NAME, token.value, {
       expires: token.expireAt,

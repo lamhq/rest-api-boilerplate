@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { IConfiguration } from '@src/config';
 import { User } from '@src/admin/user/user.entity';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { IJwtPayload } from './jwt-payload';
 
 @Injectable()

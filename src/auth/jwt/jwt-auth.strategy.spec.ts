@@ -2,7 +2,7 @@ import { mock } from 'jest-mock-extended';
 import { Test } from '@nestjs/testing';
 import { User } from '@src/admin/user/user.entity';
 import { ConfigService } from '@nestjs/config';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { IJwtPayload } from './jwt-payload';
 import { JwtAuthStrategy } from './jwt-auth.strategy';
 

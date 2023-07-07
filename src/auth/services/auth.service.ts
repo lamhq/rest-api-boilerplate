@@ -7,9 +7,9 @@ import { ConfigService } from '@nestjs/config';
 import { User } from '@src/admin/user/user.entity';
 import { UserService } from '@src/admin/user/user.service';
 import { IConfiguration } from '@src/config';
-import { UserNotFoundException } from './exceptions/user-not-found.exception';
-import { AccessToken } from './access-token';
-import { IJwtPayload } from './jwt/jwt-payload';
+import { UserNotFoundException } from '../exceptions/user-not-found.exception';
+import { AccessToken } from '../access-token';
+import { IJwtPayload } from '../jwt/jwt-payload';
 
 @Injectable()
 export class AuthService {

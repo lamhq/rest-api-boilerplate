@@ -12,4 +12,4 @@ export const factoryFn = (data: string | undefined, ctx: ExecutionContext): unkn
   return data ? user && user[data] : user;
 };
 
-export const CurUser = createParamDecorator(factoryFn);
+export const User = createParamDecorator(factoryFn);

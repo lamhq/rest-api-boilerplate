@@ -6,7 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import { UserService } from '@src/admin/user/user.service';
 import { User } from '@src/admin/user/user.entity';
 import { AuthService } from './auth.service';
-import { AccessToken } from './access-token';
+import { AccessToken } from '../access-token';
 
 describe('service', () => {
   let service: AuthService;

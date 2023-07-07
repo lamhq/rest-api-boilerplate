@@ -3,7 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { User } from '@src/admin/user/user.entity';
 import { Request } from 'express';
 import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { AccessToken } from './access-token';
 
 describe('AuthController', () => {

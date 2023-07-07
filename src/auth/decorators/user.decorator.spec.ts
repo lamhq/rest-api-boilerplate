@@ -1,9 +1,9 @@
 import { ExecutionContext } from '@nestjs/common';
 import { mock } from 'jest-mock-extended';
 import { HttpArgumentsHost } from '@nestjs/common/interfaces';
-import { factoryFn } from './cur-user.decorator';
+import { factoryFn } from './user.decorator';
 
-describe('CurUser decorator', () => {
+describe('User decorator', () => {
   const mockExecutionContext = mock<ExecutionContext>();
   const httpArgumentsHost = mock<HttpArgumentsHost>();
   const request = {

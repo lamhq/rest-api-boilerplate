@@ -2,7 +2,7 @@ import { mock } from 'jest-mock-extended';
 import { Test } from '@nestjs/testing';
 import { User } from '@src/admin/user/user.entity';
 import { BasicAuthStrategy } from './basic-auth.strategy';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 
 describe('BasicAuthStrategy', () => {
   let authStrategy: BasicAuthStrategy;

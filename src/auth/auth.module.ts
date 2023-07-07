@@ -4,7 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import { AdminModule } from '@src/admin/admin.module';
 import { IConfiguration } from '@src/config';
 import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { BasicAuthStrategy } from './basic/basic-auth.strategy';
 import { JwtAuthStrategy } from './jwt/jwt-auth.strategy';
 

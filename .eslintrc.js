@@ -1,6 +1,12 @@
+// reference: https://typescript-eslint.io/getting-started
 module.exports = {
+  // this file is the root-level one used by the project and
+  // ESLint should not search beyond this directory for config files.
+  root: true,
+  // tells ESLint to use the @typescript-eslint/parser package you installed to parse your source files.
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    // find the closest `tsconfig.json` for each source file
     project: 'tsconfig.json',
     tsconfigRootDir: __dirname,
     sourceType: 'module',
@@ -12,12 +18,14 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
-  root: true,
   env: {
     node: true,
     jest: true,
   },
-  ignorePatterns: ['.eslintrc.js'],
+  // allow using express without adding it as dependencies
+  settings: {
+    'import/core-modules': ['express'],
+  },
   rules: {
     // Use single quotes for string literals and avoid escaping characters
     'quotes': [2, 'single', { 'avoidEscape': true }],
@@ -49,9 +57,5 @@ module.exports = {
     'import/no-extraneous-dependencies':[
       'error', { 'devDependencies': true }
     ],
-  },
-  // allow using express without adding it as dependencies
-  settings: {
-    'import/core-modules': ['express'],
-  },
+  }
 };
